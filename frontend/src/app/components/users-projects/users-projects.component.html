@@ -1,0 +1,11 @@
+<div class="project-list">
+  <h2 class="project-list-title">Project List</h2>
+  <div class="project-cards">
+    <div *ngFor="let project of projects" class="project-card" (click)="openDetails(project)">
+      <div class="project-card-title">{{ project.name }}</div>
+      <p><strong>End Date:</strong> {{ project.expectedEndDate | date: 'shortDate' }}</p>
+      <p><strong>Min Members:</strong> {{ project.minMembers }}</p>
+      <p><strong>Max Members:</strong> {{ project.maxMembers }}</p>
+    </div>
+  </div>
+</div>

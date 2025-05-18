@@ -1,0 +1,26 @@
+<div *ngIf="errorMessage; else profileTemplate" class="error-message">
+    <p>Error: {{ errorMessage }}</p>
+  </div>
+  
+  <ng-template #profileTemplate>
+    <div *ngIf="userProfile" class="profile-details-container">
+      <div class="profile-details">
+        <h2>User Profile</h2>
+        <p><strong>Full Name:</strong> <span>{{ userProfile.name }} {{ userProfile.lastName }}</span></p>
+        <p><strong>Username:</strong> <span>{{ userProfile.username }}</span></p>
+        <p><strong>Email:</strong> <span>{{ userProfile.email }}</span></p>
+        <p><strong>Role:</strong> <span>{{ userProfile.role }}</span></p>
+        <p><strong>Account Status:</strong> <span>{{ userProfile.isActive ? 'Active' : 'Inactive' }}</span></p>
+        <div class="action-buttons">
+          <a *ngIf="isManager || isMember" (click)="deleteAccount()" class="action-button delete">Delete account</a>
+            <a (click)="changePassword()" class="action-button">Change password</a>
+        </div>
+      </div>
+    </div>
+  
+    <div *ngIf="!userProfile" class="loading-message">
+      <p>Loading profile...</p>
+      <div class="loading-spinner"></div>
+    </div>
+  </ng-template>
+  

@@ -1,0 +1,87 @@
+<div class="register-card">
+    <h2>Register</h2>
+
+    <div *ngIf="successMessage" class="success-message">
+      {{ successMessage }}
+    </div>
+
+    <div *ngIf="errorMessage" class="error-message">
+      {{ errorMessage }}
+    </div>
+
+    <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+      <div class="form-group">
+        <label for="name">Name</label>
+        <input type="text" id="name" formControlName="name" placeholder="Enter your name">
+        <div *ngIf="registerForm.get('name')?.invalid && registerForm.get('name')?.touched" class="error">
+          Name is required.
+        </div>
+      </div>
+  
+      <div class="form-group">
+        <label for="lastName">Last Name</label>
+        <input type="text" id="lastName" formControlName="lastName" placeholder="Enter your last name">
+        <div *ngIf="registerForm.get('lastName')?.invalid && registerForm.get('lastName')?.touched" class="error">
+          Last Name is required.
+        </div>
+      </div>
+  
+      <div class="form-group">
+        <label for="username">Username</label>
+        <input type="text" id="username" formControlName="username" placeholder="Enter a username">
+        <div *ngIf="registerForm.get('username')?.invalid && registerForm.get('username')?.touched" class="error">
+          Username must be at least 3 characters.
+        </div>
+      </div>
+  
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input type="password" id="password" formControlName="password" placeholder="Enter a password">
+        
+        <!-- Prikaz poruka o greškama -->
+        <div *ngIf="registerForm.get('password')?.invalid && registerForm.get('password')?.touched" class="error">
+          <div *ngIf="registerForm.get('password')?.errors?.['required']">
+            Password is required.
+          </div>
+          <div *ngIf="registerForm.get('password')?.errors?.['minlength']">
+            Password must be at least 8 characters long.
+          </div>
+          <div *ngIf="registerForm.get('password')?.errors?.['pattern']">
+            Password must include at least one uppercase letter, one number, and one special character.
+          </div>
+        </div>
+      </div>
+      
+      
+  
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input type="email" id="email" formControlName="email" placeholder="Enter your email">
+        <div *ngIf="registerForm.get('email')?.invalid && registerForm.get('email')?.touched" class="error">
+          Please enter a valid email address.
+        </div>
+      </div>
+  
+      <div class="form-group">
+        <label for="role">User Role</label>
+        <select id="role" formControlName="role">
+          <option value="">Select role</option>
+          <option value="member">Member</option>
+          <option value="manager">Manager</option>
+        </select>
+        <div *ngIf="registerForm.get('role')?.invalid && registerForm.get('role')?.touched" class="error">
+          Please select a role.
+        </div>
+      </div>
+
+      <re-captcha
+      (resolved)="onCaptchaResolved($event)"
+      siteKey="6LcJ2YwqAAAAAKDFfflxV4Mo7k1H_lszQ64GN6a3">
+  </re-captcha>
+  
+  
+      <button type="submit">Register</button>
+      <a class="forgot-link" (click)="openLogin()">Already have an account? Login here.</a>
+    </form>
+  </div>
+  

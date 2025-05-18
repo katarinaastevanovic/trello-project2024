@@ -1,0 +1,92 @@
+.card {
+  max-width: 400px;
+  margin: 20px auto;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  background-color: #F8ECD1;
+}
+
+h3 {
+  text-align: center;
+  margin-bottom: 16px;
+}
+
+.member-list {
+  list-style-type: none;
+  padding: 0;
+}
+
+.member-list li {
+  margin-bottom: 8px;
+}
+
+button {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  margin-top: 16px;
+  font-size: 16px;
+  font-weight: bold;
+  background-color: #85586F;
+  color: #F8ECD1;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #DEB6AB;
+}
+
+.notification {
+  margin: 10px auto;
+  font-weight: bold;
+  font-size: 16px;
+  text-align: center;
+  animation: fadeInOut 3s ease-in-out;
+}
+
+.success {
+  color: #4caf50;
+}
+
+.error {
+  color: #f44336;
+}
+
+@keyframes fadeInOut {
+  0% { opacity: 0; }
+  10% { opacity: 1; }
+  90% { opacity: 1; }
+  100% { opacity: 0; }
+}
+
+input[type="checkbox"] {
+  appearance: none; /* Uklanja defaultni izgled */
+  width: 18px;
+  height: 18px;
+  border: 2px solid #85586F;
+  border-radius: 4px;
+  background-color: white;
+  cursor: pointer;
+  position: relative;
+}
+
+input[type="checkbox"]:checked {
+  background-color: #85586F;
+  border: 2px solid #85586F;
+}
+
+input[type="checkbox"]:checked::after {
+  content: '\2713'; /* Unicode za čekiran znak */
+  font-size: 14px;
+  color: white;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+

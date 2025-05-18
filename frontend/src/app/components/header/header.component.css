@@ -1,0 +1,92 @@
+.header {
+    background-color: #DEB6AB;
+    color: #85586F;
+    padding: 0.5rem; 
+    height: 60px; 
+}
+
+.header nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100%; 
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    flex-grow: 1; 
+}
+
+.logo h1 {
+    margin: 0;
+    font-size: 1.5rem;
+}
+
+.nav-links {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    gap: 2rem;
+    align-items: center; 
+}
+
+.nav-links li {
+    display: flex; 
+    align-items: center; 
+}
+
+.nav-links li a {
+    color: #F8ECD1;
+    text-decoration: none;
+    transition: color 0.3s;
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.nav-links li a:hover {
+    color: #F8ECD1;
+}
+
+.nav-links li a:not(:has(img)) {
+    color: #F8ECD1;
+    background-color: #85586F;
+}
+
+.nav-links li a:not(:has(img)):hover {
+    background-color: #AC7D88;
+    color: #F8ECD1;
+}
+
+.logo-link {
+    text-decoration: none; 
+    color: inherit;
+    cursor: pointer; 
+}
+
+.logo-link:hover {
+    color: inherit; 
+    opacity: 0.8;
+}
+
+.profile-image {
+    width: 40px; 
+    height: 40px;
+    border-radius: 50%; 
+    object-fit: cover; 
+    border: 2px solid #F8ECD1; 
+    cursor: pointer;
+    transition: transform 0.3s, box-shadow 0.3s;
+  }
+  
+  .profile-image:hover {
+    transform: scale(1.1); 
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); 
+
+  }
+
+

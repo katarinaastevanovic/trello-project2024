@@ -1,0 +1,32 @@
+<header class="header">
+  <nav>
+    <div class="logo">
+      <a routerLink="/projects-list" class="logo-link">
+        <h1>Trello</h1>
+      </a>
+    </div>        
+    <ul class="nav-links">
+      <!-- Prikaz dugmeta za dodavanje projekta samo za menadžera -->
+      <li *ngIf="isManager">
+        <a routerLink="/add-projects" class="button">Add project</a>
+      </li>
+
+      <!-- Prikaz dugmeta za notifikacije samo za člana -->
+      <li *ngIf="isMember">
+        <a routerLink="/notifications-user">
+          <img src="assets/notification.png" alt="Notifications" class="profile-image">
+        </a>
+      </li>
+
+      <!-- Prikaz profila i logout opcije za sve autentifikovane korisnike -->
+      <li *ngIf="isAuthenticated">
+        <a routerLink="/users-profile">
+          <img src="assets/profile.png" alt="User Profile Picture" class="profile-image">
+        </a>
+      </li>
+      <li *ngIf="isAuthenticated">
+        <a (click)="logout()" class="button">Logout</a>
+      </li>
+    </ul>
+  </nav>
+</header>

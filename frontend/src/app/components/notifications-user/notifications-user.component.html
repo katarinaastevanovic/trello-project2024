@@ -1,0 +1,18 @@
+<div class="notifications-container">
+    <h2>Your Notifications</h2>
+  
+    <div *ngIf="errorMessage" class="error-message">
+      {{ errorMessage }}
+    </div>
+  
+    <ul *ngIf="notifications.length > 0">
+      <li *ngFor="let notification of notifications" [class.read]="notification.is_read">
+        <p>{{ notification.message }}</p>
+        <small>{{ notification.created_at | date: 'short' }}</small>
+        
+      </li>
+    </ul>
+  
+    <p *ngIf="notifications.length === 0 && !errorMessage">No notifications found.</p>
+  </div>
+  

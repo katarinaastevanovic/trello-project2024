@@ -1,0 +1,58 @@
+<p *ngIf="successMessage" class="notification success">{{ successMessage }}</p>
+<p *ngIf="errorMessage" class="notification error">{{ errorMessage }}</p>
+<div *ngIf="showDeleteConfirmation" class="modal-overlay">
+  <div class="modal">
+    <p>Are you sure you want to delete the project?</p>
+    <div class="modal-actions">
+      <button (click)="deleteProject()" class="action-button confirm-delete-btn">Delete</button>
+      <button (click)="cancelDelete()" class="action-button cancel-delete-btn">Cancel</button>
+    </div>
+  </div>
+</div>
+<div *ngIf="project" class="project-details-container">
+  <div class="project-details">
+    <h2>{{ project.name }}</h2>
+    <p><strong>Expected End Date:</strong> {{ project.expectedEndDate | date: 'shortDate' }}</p>
+    <p><strong>Min Members:</strong> {{ project.minMembers }}</p>
+    <p><strong>Max Members:</strong> {{ project.maxMembers }}</p>
+    <button (click)="goBack()" class="action-button">Back</button>
+    <button *ngIf="isManager" (click)="confirmDelete()" class="action-button delete-button">Delete Project</button>
+
+    <div *ngIf="tasks && tasks.length > 0" class="task-list">
+      <h3>Tasks for this Project:</h3>
+      <ul>
+        <li *ngFor="let task of tasks">
+          <div class="task-card">
+            <strong>{{ task.title }}</strong>
+            <p>{{ task.description }}</p>
+            <p>Status: {{ task.status }}</p>
+
+            <button *ngIf="isManager" (click)="openAddMembersToTask(task.id)" class="action-button add-member-btn">
+              Add Member to Task
+            </button>
+
+            <button *ngIf="isAuthenticated" (click)="viewMembersToTask(task.id)" class="action-button view-members-btn">
+              View Members
+            </button>
+
+            <!-- Dropdown za promenu statusa -->
+            <div class="status-container" *ngIf="isMember">
+              <label for="statusDropdown" class="status-label">Change Status:</label>
+              <select id="statusDropdown" [(ngModel)]="task.status" (change)="updateTaskStatus(task)" class="status-dropdown">
+                <option value="Pending">Pending</option>
+                <option value="In progress">In progress</option>
+                <option value="Completed">Completed</option>
+              </select>
+            </div>
+          </div>
+        </li>
+      </ul>
+    </div>
+
+    <div class="action-buttons">
+      <button *ngIf="isManager" (click)="addTask()" class="action-button">Add Task</button>
+      <button *ngIf="isManager" (click)="viewMembers()" class="action-button">View Members</button>
+      <button *ngIf="isManager" (click)="addMember()" class="action-button">Add Member</button>
+    </div>
+  </div>
+</div>

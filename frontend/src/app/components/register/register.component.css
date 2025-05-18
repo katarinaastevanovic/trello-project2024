@@ -1,0 +1,96 @@
+.register-card {
+    width: 300px;
+    padding: 20px;
+    margin: 30px auto 0 auto; 
+    border: 1px solid #85586F;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    background-color: #F8ECD1;
+  }
+  
+  .register-card h2 {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .form-group {
+    margin-bottom: 15px;
+  }
+  
+  .form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+  }
+  
+  .form-group input,
+  .form-group select {
+    width: 90%;
+    padding: 8px;
+    border: 1px solid #85586F;
+    border-radius: 4px;
+  }
+  
+  button {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 4px;
+    background-color: #AC7D88;
+    color: #fff;
+    font-size: 16px;
+    cursor: pointer;
+  }
+  
+  button:hover {
+    background-color: #85586F;
+  }
+
+  .error {
+    color: #D9534F;
+    font-size: 12px;
+    margin-top: 5px;
+  }
+  
+  .forgot-link,
+.back-link {
+  display: block;
+  text-align: center;
+  margin-top: 20px;
+  color: #85586F;
+  text-decoration: none;
+  cursor: pointer;
+  transition: color 0.3s, font-weight 0.3s;
+}
+
+.forgot-link:hover,
+.back-link:hover {
+  color: #6b3b4a;
+  font-weight: bold;
+}
+
+.success-message {
+  color: #4caf50;
+  background-color: #e8f5e9;
+  border: 1px solid #c8e6c9;
+  padding: 10px;
+  margin-bottom: 20px;
+  border-radius: 5px;
+  text-align: center;
+}
+
+.error-message {
+  color: #f44336;
+  background-color: #fdecea;
+  border: 1px solid #f5c6cb;
+  padding: 10px;
+  margin-bottom: 20px;
+  border-radius: 5px;
+  text-align: center;
+}
+
+.error {
+  color: #f44336;
+  font-size: 14px;
+  margin-top: 5px;
+}

@@ -1,0 +1,19 @@
+<div class="card">
+  <h3>Select Members to Add</h3>
+
+  <p *ngIf="successMessage" class="notification success">{{ successMessage }}</p>
+  <p *ngIf="errorMessage" class="notification error">{{ errorMessage }}</p>
+
+  <ul class="member-list">
+    <li *ngFor="let member of members">
+      <label>
+        <input type="checkbox" [(ngModel)]="member.selected" [disabled]="!isManager" />
+        {{ member.name}} 
+      </label>
+    </li>
+  </ul>
+
+  <!-- Dugme je vidljivo samo menadžerima -->
+  <button *ngIf="isManager" (click)="addSelectedMembers()">Add Members</button>
+  <p *ngIf="!isManager" class="info-text">You must be a manager to add members.</p>
+</div>

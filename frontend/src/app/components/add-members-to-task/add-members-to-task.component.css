@@ -1,0 +1,109 @@
+/* Stil za glavni kontejner */
+.container {
+    max-width: 500px;
+    margin: 20px auto;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background-color: #F8ECD1;
+  }
+  
+  h2 {
+    text-align: center;
+    color: #85586F;
+    margin-bottom: 20px;
+  }
+  
+  /* Stilovi za formu */
+  form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+  
+  /* Stilovi za checkbox */
+  .checkbox-container {
+    display: flex;
+    align-items: center;
+    background-color: #e7eaf6;
+    padding: 12px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .checkbox-container:hover {
+    background-color: #d3d7f2;
+  }
+  
+  .checkbox-container input {
+    margin-right: 10px;
+    transform: scale(1.3);
+  }
+  
+  .checkbox-container span {
+    font-size: 16px;
+    color: #333;
+  }
+  
+  /* Stil za dugme */
+  .btn {
+    background-color: #85586F;
+    color: white;
+    border: none;
+    padding: 12px;
+    font-size: 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .btn:disabled {
+    background-color: #9e9e9e;
+    cursor: not-allowed;
+  }
+  
+  .btn:hover:not(:disabled) {
+    background-color: #DEB6AB;
+  }
+  
+  /* Poruke o uspehu i grešci */
+  .success, .error {
+    text-align: center;
+    padding: 10px;
+    margin-top: 15px;
+    border-radius: 5px;
+  }
+  
+  .success {
+    background-color: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+  }
+  
+  .error {
+    background-color: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+  }
+  
+  .info {
+    text-align: center;
+    color: #777;
+    font-style: italic;
+    margin-top: 20px;
+  }
+  
+  /* Responsive adjustments */
+  @media (max-width: 600px) {
+    .container {
+      padding: 15px;
+    }
+    
+    .btn {
+      font-size: 14px;
+      padding: 10px;
+    }
+  }
+  

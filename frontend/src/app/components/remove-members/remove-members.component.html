@@ -1,0 +1,28 @@
+<div class="delete-member">
+  <h2>Project Members</h2>
+
+  <p *ngIf="successMessage" class="notification success">{{ successMessage }}</p>
+
+  <p *ngIf="errorMessage" class="notification error">{{ errorMessage }}</p>
+
+  <table class="project-table" *ngIf="members.length > 0">
+    <thead>
+      <tr>
+        <th>Member Name</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let member of members">
+        <td>{{ member.name }}</td>
+        <td>
+          <button (click)="removeMember(member._id)" class="remove-btn">Remove</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div *ngIf="members.length === 0" class="no-members">
+    <p>No members found for this project.</p>
+  </div>
+</div>

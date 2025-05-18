@@ -1,0 +1,82 @@
+.delete-member {
+  max-width: 600px;
+  margin: 40px auto;
+  text-align: center;
+  background-color: #F8ECD1;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+  color: #85586F;
+  margin-bottom: 25px;
+}
+
+.notification {
+  margin: 10px auto;
+  font-weight: bold;
+  font-size: 16px;
+  animation: fadeInOut 3s ease-in-out;
+}
+
+.success {
+  color: #4caf50;
+}
+
+.error {
+  color: #f44336;
+}
+
+.project-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+.project-table th,
+.project-table td {
+  border: 1px solid #ddd;
+  padding: 12px;
+  text-align: left;
+}
+
+.project-table th {
+  background-color: #85586F;
+  color: white;
+}
+
+.project-table tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+.project-table tr:hover {
+  background-color: #f1f1f1;
+}
+
+.remove-btn {
+  background-color: #ff4d4d;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  font-size: 14px;
+  cursor: pointer;
+  border-radius: 6px;
+  transition: background-color 0.3s ease;
+}
+
+.remove-btn:hover {
+  background-color: #ff1a1a;
+}
+
+.no-members {
+  color: #777;
+  margin-top: 20px;
+}
+
+@keyframes fadeInOut {
+  0% { opacity: 0; }
+  10% { opacity: 1; }
+  90% { opacity: 1; }
+  100% { opacity: 0; }
+}

@@ -1,0 +1,29 @@
+<div class="container">
+  <h2>Add Members to Task</h2>
+
+  <div *ngIf="members.length > 0; else noMembers">
+    <form (ngSubmit)="addSelectedMembers()">
+      <div *ngFor="let member of members; let i = index" class="checkbox-container">
+        <label>
+          <input
+            type="checkbox"
+            [(ngModel)]="member.selected"
+            name="selectedMember{{ i }}"
+            (change)="onCheckboxChange()"
+            [ngModelOptions]="{ standalone: true }"
+          />
+          <span>{{ member.name }} {{ member.lastName }} ({{ member.role }})</span>
+        </label>
+      </div>
+      <button type="submit" class="btn" [disabled]="!isAnyMemberSelected()">Add Selected Members</button>
+    </form>
+  </div>
+
+  <ng-template #noMembers>
+    <p class="info">No members available to add.</p>
+  </ng-template>
+
+  <!-- Prikazivanje poruka o uspehu i grešci -->
+  <p *ngIf="successMessage" class="success">{{ successMessage }}</p>
+  <p *ngIf="errorMessage" class="error">{{ errorMessage }}</p>
+</div>

@@ -1,0 +1,65 @@
+.delete-account {
+  max-width: 400px;
+  margin: 40px auto;
+  text-align: center;
+  background-color: #F8ECD1;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+  text-align: center;
+  color: #85586F;
+  margin-bottom: 25px;
+  font-size: 24px;
+  font-weight: 600;
+}
+
+button {
+  padding: 12px 20px;
+  border-radius: 6px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  border: none;
+  display: block;
+  width: 100%;
+  margin-top: 15px;
+  background-color: #85586F;
+  color: #F8ECD1;
+}
+
+button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+button:hover:not(:disabled) {
+  background-color: #DEB6AB;
+  transform: scale(1.05);
+}
+
+/* Stil za običan tekst poruke bez pravougaonika */
+.notification {
+  margin: 10px auto;
+  font-weight: bold;
+  font-size: 16px;
+  animation: fadeInOut 3s ease-in-out;
+}
+
+.success {
+  color: #4caf50; /* Zelen tekst za uspešne poruke */
+}
+
+.error {
+  color: #f44336; /* Crven tekst za greške */
+}
+
+@keyframes fadeInOut {
+  0% { opacity: 0; }
+  10% { opacity: 1; }
+  90% { opacity: 1; }
+  100% { opacity: 0; }
+}

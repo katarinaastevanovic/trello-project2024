@@ -1,0 +1,48 @@
+.notifications-container {
+    max-width: 600px;
+    margin: 20px auto;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+  }
+  
+  .notifications-container h2 {
+    text-align: center;
+  }
+  
+  .notifications-container ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .notifications-container li {
+    margin-bottom: 10px;
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  .notifications-container li.read {
+    background-color: #e0e0e0;
+  }
+  
+  .notifications-container li button {
+    margin-top: 5px;
+    padding: 5px 10px;
+    border: none;
+    background-color: #007bff;
+    color: white;
+    border-radius: 3px;
+    cursor: pointer;
+  }
+  
+  .notifications-container li button:hover {
+    background-color: #0056b3;
+  }
+  
+  .error-message {
+    color: red;
+    text-align: center;
+    margin-bottom: 10px;
+  }
+  

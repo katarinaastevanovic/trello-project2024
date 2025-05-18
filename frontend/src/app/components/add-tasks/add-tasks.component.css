@@ -1,0 +1,101 @@
+form {
+    background-color: #F8ECD1;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    max-width: 500px;
+    margin: 20px auto;
+  }
+  
+  label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+    color: #333;
+  }
+  
+  input, textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #85586F;
+    border-radius: 4px;
+    font-size: 16px;
+  }
+  
+  button {
+    background-color: #85586F;
+    color: #F8ECD1;
+    border: none;
+    padding: 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  button:hover {
+    background-color: #DEB6AB;
+  }
+  
+  .notification {
+    margin: 10px auto;
+    font-weight: bold;
+    text-align: center;
+    animation: fadeInOut 3s ease-in-out;
+  }
+  
+  .success {
+    color: #4caf50;
+  }
+  
+  .error {
+    color: #f44336;
+  }
+  
+  @keyframes fadeInOut {
+    0% { opacity: 0; }
+    10% { opacity: 1; }
+    90% { opacity: 1; }
+    100% { opacity: 0; }
+  }
+  .custom-select-container {
+    position: relative;
+    width: 100%;
+    margin-bottom: 15px;
+  }
+  
+  .custom-select {
+    appearance: none; /* Uklanja podrazumevani izgled */
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background-color: #F8ECD1;
+    border: 1px solid #85586F;
+    border-radius: 4px;
+    padding: 10px;
+    font-size: 16px;
+    width: 100%;
+    color: #4d4d4d;
+    cursor: pointer;
+  }
+  
+  .custom-select:focus {
+    outline: none;
+    border-color: #DEB6AB;
+    box-shadow: 0 0 5px rgba(136, 84, 109, 0.5);
+  }
+  
+  .custom-select-container::after {
+    content: '▼'; /* Dodaje strelicu za padajući meni */
+    position: absolute;
+    top: 50%;
+    right: 15px;
+    transform: translateY(-50%);
+    color: #85586F;
+    pointer-events: none;
+  }
+  
+  .custom-select option {
+    background-color: #F8ECD1;
+    color: #4d4d4d;
+  }
+  

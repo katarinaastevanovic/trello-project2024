@@ -1,0 +1,31 @@
+<div *ngIf="showForm">
+  <form [formGroup]="taskForm" (ngSubmit)="onSubmit()">
+    <h2>Create New Task</h2>
+
+    <p *ngIf="successMessage" class="notification success">{{ successMessage }}</p>
+
+    <p *ngIf="errorMessage" class="notification error">{{ errorMessage }}</p>
+
+    <label for="title">Title:</label>
+    <input id="title" formControlName="title" required>
+
+    <label for="description">Description:</label>
+    <textarea id="description" formControlName="description" required></textarea>
+
+    <label for="dependsOn">Depends On:</label>
+    <div class="custom-select-container">
+      <select id="dependsOn" formControlName="dependsOn" class="custom-select">
+        <option value="">None</option>
+        <option *ngFor="let task of tasks" [value]="task.id">{{ task.title }}</option>
+      </select>
+    </div>
+
+
+
+
+
+    <button type="submit">Submit</button>
+  </form>
+</div>
+
+  
