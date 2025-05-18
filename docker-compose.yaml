@@ -1,0 +1,155 @@
+version: '3.8'
+
+services:
+
+  # frontend:
+    #   build:
+    #     context: ./frontend
+    #   ports:
+    #     - "4200:4200"  
+    #   depends_on:
+    #     - tasks-service
+    #     - projects-service
+    #     - users-service
+    #   networks:
+    #     - app-network
+  notifications-service:
+    build:
+      context: ./backend/notifications-service
+      dockerfile: Dockerfile
+    hostname: notifications-service
+    ports:
+      - "${NOTIFICATIONS_SERVICE_PORT}:${NOTIFICATIONS_SERVICE_INTERNAL_PORT}"
+    environment:
+      - CASS_DB=${CASS_DB}
+      - CASSANDRA_CONTACT_POINTS=${CASSANDRA_CONTACT_POINTS}
+      - CASSANDRA_PORT=${CASSANDRA_PORT}
+      - CASSANDRA_KEYSPACE=${CASSANDRA_KEYSPACE}
+      - CASSANDRA_CLUSTER_NAME=${CASSANDRA_CLUSTER_NAME}
+    networks:
+      - app-network
+    depends_on:
+      - cassandra
+    restart: always
+  
+  cassandra:
+    image: cassandra:4.1
+    container_name: cassandra
+    hostname: cassandra
+    ports:
+      - "${CASSANDRA_PORT}:${CASSANDRA_PORT}"
+    environment:
+      - CASSANDRA_CLUSTER_NAME=TrelloCluster
+      - CASSANDRA_NUM_TOKENS=256
+    networks:
+      - app-network
+    healthcheck:
+      test: ["CMD", "cqlsh", "-e", "SELECT now() FROM system.local;"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+    
+  tasks-service:
+    build:
+      context: ./backend/tasks-service
+      dockerfile: Dockerfile
+    hostname: tasks-service
+    ports:
+      - "${TASKS_SERVICE_PORT}:${TASKS_SERVICE_INTERNAL_PORT}"
+    environment:
+      - MONGO_TASKS_URI=${MONGO_TASKS_URI}
+    depends_on:
+      - mongo-tasks
+    networks:
+      - app-network
+
+  projects-service:
+    build:
+      context: ./backend/projects-service
+      dockerfile: Dockerfile
+    hostname: projects-service
+    ports:
+      - "${PROJECTS_SERVICE_PORT}:${PROJECTS_SERVICE_INTERNAL_PORT}"
+    environment:
+      - MONGO_PROJECTS_URI=${MONGO_PROJECTS_URI}
+    depends_on: 
+      - mongo-projects
+    networks:
+      - app-network
+
+  users-service:
+    build:
+      context: ./backend/users-service
+      dockerfile: Dockerfile
+    hostname: users-service
+    ports:
+      - "${USERS_SERVICE_PORT}:${USERS_SERVICE_INTERNAL_PORT}"
+    environment:
+      - MONGO_USERS_URI=${MONGO_USERS_URI}
+    depends_on:
+      - mongo-users
+    volumes:
+      - ./backend/blacklist.txt:/app/blacklist.txt
+    networks:
+      - app-network
+
+  api_gateway:
+    build:
+      context: ./api-gateway/
+      dockerfile: Dockerfile
+    container_name: api-gateway
+    restart: on-failure
+    ports:
+      - "${GATEWAY_PORT}:${GATEWAY_PORT}"
+    # depends_on:
+    #   - tasks-service
+    #   - projects-service
+    #   - users-service
+    networks:
+      - app-network
+
+  mongo-tasks:
+    image: mongo:latest
+    container_name: mongo-tasks
+    hostname: mongo-tasks
+    ports:
+      - "${MONGO_TASKS_PORT}:${MONGO_TASKS_INTERNAL_PORT}"
+    volumes:
+      - mongo-tasks-data:/data/db
+    networks:
+      - app-network
+
+  mongo-projects:
+    image: mongo:latest
+    container_name: mongo-projects
+    hostname: mongo-projects
+    ports:
+      - "${MONGO_PROJECTS_PORT}:${MONGO_PROJECTS_INTERNAL_PORT}"
+    volumes:
+      - mongo-projects-data:/data/db
+    networks:
+      - app-network
+
+  mongo-users:
+    image: mongo:latest
+    container_name: mongo-users
+    hostname: mongo-users
+    ports:
+      - "${MONGO_USERS_PORT}:${MONGO_USERS_INTERNAL_PORT}"
+    volumes:
+      - mongo-users-data:/data/db
+    networks:
+      - app-network
+
+volumes:
+  mongo-tasks-data:
+    driver: local
+  mongo-projects-data:
+    driver: local
+  mongo-users-data:
+    driver: local
+
+networks:
+  app-network:
+    name: app-network
+    driver: bridge
